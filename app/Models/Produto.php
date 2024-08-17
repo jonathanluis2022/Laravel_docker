@@ -13,4 +13,17 @@ class Produto extends Model
         'nome',
         'valor'
     ];
+
+    public function getProdutoPesquisar(string $search = '') 
+    {
+        $produto = $this->where(function ($query) use ($search) {
+            if($search) {
+                $query->where('nome', $search); // exite no bd !?
+                $query->orWhere('nome', 'LIKE', "%{$search}%"); // exitindo quero q vem nesta condição
+            } 
+        })->get();
+
+        return $produto ; 
+    }
+    
 }

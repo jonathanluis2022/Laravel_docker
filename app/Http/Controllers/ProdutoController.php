@@ -7,10 +7,27 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
-    public function index()
+    protected $produto;
+    public function __construct(Produto $produto)
     {
-        $findProduto = Produto::all();
+        $this->produto = $produto;
+    }
+
+    public function index(Request $request)
+    {
+        $pesquisar = $request->input('pesquisar');
         
+        // Apenas realiza a pesquisa se o campo "pesquisar" estiver preenchido
+        $findProduto = [];
+        if (!empty($pesquisar)) {
+            $findProduto = $this->produto->getProdutoPesquisar(search: $pesquisar);
+        };
+    
         return view('pages.produtos.paginacao', compact('findProduto'));
+    }
+
+    public function delete(Request $request)
+    {
+        
     }
 }
