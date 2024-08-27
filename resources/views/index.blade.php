@@ -7,31 +7,28 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.111.3">
-    <title>Gestao</title>
+    <title>Gestão</title>
 
+    <!-- Estilos customizados -->
     @yield('styles')
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href=" {{ asset('icones/apple-touch-icon.png') }}" sizes="180x180">
-    <link rel="icon" href=" {{ asset('icones/favicon-32x32.png') }}" sizes="32x32" type="image/png">
-    <link rel="icon" href=" {{ asset('icones/favicon-16x16.png') }}" sizes="16x16" type="image/png">
+    <link rel="apple-touch-icon" href="{{ asset('icones/apple-touch-icon.png') }}" sizes="180x180">
+    <link rel="icon" href="{{ asset('icones/favicon-32x32.png') }}" sizes="32x32" type="image/png">
+    <link rel="icon" href="{{ asset('icones/favicon-16x16.png') }}" sizes="16x16" type="image/png">
     <link rel="manifest" href="{{ asset('icones/manifest.json') }}">
     <link rel="mask-icon" href="{{ asset('icones/safari-pinned-tab.svg') }}" color="#712cf9">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
-    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
     <meta name="theme-color" content="#712cf9">
-
 
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
             user-select: none;
         }
 
@@ -44,10 +41,10 @@
         .b-example-divider {
             width: 100%;
             height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
+            background-color: rgba(0, 0, 0, 0.1);
+            border: solid rgba(0, 0, 0, 0.15);
             border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, 0.1), inset 0 .125em .5em rgba(0, 0, 0, 0.15);
         }
 
         .b-example-vr {
@@ -100,12 +97,11 @@
             z-index: 1500;
         }
     </style>
-
 </head>
 
 <body>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">GESTAO</a>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">GESTÃO</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -122,28 +118,38 @@
 
     <div class="container-fluid">
         <div class="row">
-            @include('components.navegacao')
+            <!-- Navegação lateral -->
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky pt-3">
+                    @include('components.navegacao')
+                </div>
+            </nav>
+    
+            <!-- Conteúdo principal -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 @yield('content')
             </main>
         </div>
     </div>
-
+    
+    <!-- Scripts -->
     @yield('scripts')
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="/js/bootstrap.blundle.min.js"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
-    <script src="/js/dashboard.js"></script>
-    <script src="/js/color-modes.js"></script>
-    {{-- InputMask --}}
+    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="{{ asset('js/color-modes.js') }}"></script>
+
+    <!-- InputMask -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
-    {{-- BlocUI loading --}}
+    <!-- BlockUI loading -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
 
-    <script src="/js/projeto.js"></script>
-    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <!-- Custom Script -->
+    <script src="{{ asset('js/projeto.js') }}"></script>
+    <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 
 </body>
 

@@ -14,6 +14,7 @@ class Produto extends Model
         'valor'
     ];
 
+    // consulta o nome ao banco , caso nao encontre , traga os nomes correspondentes  
     public function getProdutoPesquisar(string $search = '') 
     {
         $produto = $this->where(function ($query) use ($search) {

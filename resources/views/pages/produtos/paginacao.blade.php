@@ -10,42 +10,45 @@ section tudo referente a produtos
         <h1 class="h2"> Produtos </h1>
     </div>
 
-    <div>
-        <form action="{{ route('produtos.index') }}" method="get">
-            <input type="text" name="pesquisar" placeholder="digite o nome ">
-            <button> Pesquisar </button>
-            <a href="" type="button" class="btn btn-success float-end"> 
-                incluir produto 
-            </a>
+    <div class="container">
+        <!-- enviando uma requisicao Get para a rota (produtos.index) 
+            que essa rota esta sendo controlada pelo ProdutoController com o metodo index  
+        -->
+        <form action="{{ route('produtos.index') }}" method="get" class="d-flex justify-content-between align-items-center mb-3">
+            <input type="text" name="pesquisar" placeholder="Digite o nome" class="form-control w-50 me-2">
+            <button class="btn btn-primary">Pesquisar</button>
+            <a href="#" class="btn btn-success ms-2">Incluir Produto</a>
         </form>
-
+    
         <div class="table-responsive mt-4">
-            @if (collect($findProduto)->isEmpty())
-                <p> Não exixte Dados </p>
+            @if (collect($findProduto)->isEmpty()) <!-- si o array findProduto for vazia  -->
+                <p>Não existe Dados</p>
             @else   
-                 <table class="table table-striped table-sm">
-                        <thead>
-                                <tr>
-                                    <th> Nome </th>
-                                    <th> Valor </th>
-                                    <th> Açoes </th>
-                                </tr>
-                        </thead>
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Valor</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($findProduto as $produto)
+                            <tr>
+                                <td>{{ $produto->nome }}</td>
+                                <td>{{ 'R$' . ' ' . number_format($produto->valor, 2, ',', '.') }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-light btn-sm">Editar</a>
 
-                        <tbody>
-                            @foreach ($findProduto as $produto )
-                                <tr>
-                                    <td> {{ $produto->nome }} </td>
-                                    <td> {{ 'R$' . ' ' . number_format($produto->valor, 2, ',', '.' ) }} </td>
-                                    <td>
-                                        <a href="" class="btn btn-light btn-sm"> Editar </a>
-                                        <a href="{{ asset('produtos.delete')}}" class="btn btn-danger btn-sm"> Excluir </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+                                    <meta name='csrf-token' content=" {{ csrf_token() }}">
+                                    <a onclick="deleteRegistroPaginacao('{{ route('produto.delete') }} ', {{ $produto->id }} )" class="btn btn-danger btn-sm">Excluir</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             @endif
         </div>
     </div>
+    
 @endsection

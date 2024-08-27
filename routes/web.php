@@ -20,6 +20,6 @@ Route::get('/', function () {
 
 Route::prefix('produtos')->group(function() {
     Route::get('/', [ProdutoController::class, 'index'])->name('produtos.index');
-    Route::delete('/delete', [ProdutoController::class, 'delete'])->name('produtos.delete');
+    Route::delete('/delete', [ProdutoController::class, 'delete'])->name('produto.delete');
 
 });
