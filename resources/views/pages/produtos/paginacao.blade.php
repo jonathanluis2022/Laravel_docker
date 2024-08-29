@@ -17,7 +17,9 @@ section tudo referente a produtos
         <form action="{{ route('produtos.index') }}" method="get" class="d-flex justify-content-between align-items-center mb-3">
             <input type="text" name="pesquisar" placeholder="Digite o nome" class="form-control w-50 me-2">
             <button class="btn btn-primary">Pesquisar</button>
-            <a href="#" class="btn btn-success ms-2">Incluir Produto</a>
+
+            <a type="button" href="{{ route('cadastrar.produto') }}" class="btn btn-success ms-2">Incluir Produto</a>
+
         </form>
     
         <div class="table-responsive mt-4">

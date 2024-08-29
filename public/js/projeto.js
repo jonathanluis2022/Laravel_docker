@@ -27,3 +27,9 @@ function deleteRegistroPaginacao(rotaUrl, idDoRegistro){
         });
     }
 }
+
+//mascara que ira converter automaticamente para " #.##0,00 ", ex: " 1.500,00 "
+$('#mask_valor').mask('#.##0,00', {reverse: true});
+
+
+
